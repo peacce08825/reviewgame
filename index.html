@@ -111,8 +111,8 @@ input[type=file]{display:none;}
 .q-card .txt{font-size:17px;font-weight:600;white-space:pre-wrap;line-height:1.55;}
 .mascot-corner{position:absolute;top:-18px;right:-6px;width:52px;height:52px;}
 
-.mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.mc-opt{border-radius:16px;padding:16px 12px;color:#fff;font-weight:700;font-size:13px;text-align:left;display:flex;gap:9px;align-items:flex-start;box-shadow:0 5px 0 rgba(0,0,0,.15);min-height:76px;white-space:pre-wrap;}
+.mc-grid{display:flex;flex-direction:column;gap:10px;}
+.mc-opt{border-radius:16px;padding:15px 14px;color:#fff;font-weight:700;font-size:13.5px;line-height:1.5;text-align:left;display:flex;gap:10px;align-items:flex-start;box-shadow:0 5px 0 rgba(0,0,0,.15);white-space:pre-wrap;}
 .mc-opt:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.15);}
 .mc-opt .shape{flex:0 0 auto;width:18px;height:18px;margin-top:1px;}
 .mc-opt.c1{background:var(--mc1);} .mc-opt.c2{background:var(--mc2);} .mc-opt.c3{background:var(--mc3);} .mc-opt.c4{background:var(--mc4);}
@@ -447,7 +447,7 @@ function buildQuestions(){
     if(type==='mc'){
       let distractPool = wholeCourse.filter(x=>x.id!==card.id);
       const distractors = shuffle(distractPool).slice(0,3);
-      const options = shuffle([card, ...distractors]).map(c=>({id:c.id, text: truncate(c.back, 90), correct: c.id===card.id}));
+      const options = shuffle([card, ...distractors]).map(c=>({id:c.id, text: c.back, correct: c.id===card.id}));
       return {card, type:'mc', options};
     }
     return {card, type:'sa'};
